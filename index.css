@@ -11,6 +11,59 @@
   margin: auto;
 }
 
+.mainform2{
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 80%;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+} 
+
+.mainform2 button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #707070;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+} 
+
+.mainform2 button:hover,.form button:active,.form button:focus {
+  background: #858585;
+}
+
+.mainform2 input {
+  font-family: "Roboto", sans-serif;
+
+  background: #f2f2f2;
+
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.mainform select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 40%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+
 .mainform{
     position: relative;
     margin: auto;

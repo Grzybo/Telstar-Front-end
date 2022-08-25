@@ -2,6 +2,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
         
     </head>
     <body onload="openTab(event, 'Booking')">
@@ -10,19 +12,37 @@
         </div>
 
         <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Booking')">Booking Devivery</button>
+            <button class="tablinks" onclick="openTab(event, 'Booking')">Booking Delivery</button>
             <button class="tablinks" onclick="openTab(event, 'Report')">Data Report</button>
-          </div>
+          </div> 
+
+
           
           <div id="Booking" class="tabcontent">
             
-              <h3>Devivery Booking</h3> 
+              <h3>Delivery Booking</h3> 
               <div class="mainform">
-
-              <input type="search" id="fromLoc" name="fromLoc" placeholder="From Location">
-              <input type="search" id="toLoc" name="toLoc" placeholder="To Location"> 
+                
+              <label for="fromLoc">From Location:</label>
+              <select id="fromLoc" name="fromLoc">
+                <option value="">(From Location)</option>
+                <option value="Kongo">Kongo</option>
+                <option value="Kabalo">Kabalo</option>
+                <option value="Luanda">Luanda</option>
+              </select>
               <br>
+              <label for="toLoc">To Location:&nbsp; &nbsp; &nbsp;</label>
+              <select id="toLoc" name="toLoc">
+                <option value="">(To Location)</option>
+                <option value="Kongo">Kongo</option>
+                <option value="Kabalo">Kabalo</option>
+                <option value="Luanda">Luanda</option>
+              </select>
+              <br>
+              <label for="fromDt">Sending Date:&nbsp;</label>
               <input type="date" id="fromDt" name="fromDt" placeholder="Date of Sending">
+              <br>
+              <label for="toDt">Delivery Date:</label>
               <input type="date" id="toDt" name="fromDt" placeholder="Date of Delivery">
               <br>
               <div style="text-align: left">
@@ -42,8 +62,46 @@
                 <input type="checkbox" id="recomended" name="cautious_goods" value="Delivery Guarantee* (with additional fee)">
                 <label for="recomended">Delivery Guarantee* (with additional fee)<br> 
             </div>
-            <button onclick="" style="width: 50%;">Search</button>  
-              
+            <button onclick="showTable()" style="width: 100px;">Search</button>
+            <button onclick="resetFields()" style="width: 100px;">Reset</button>   
+             
+            <div id="resultTable" style="text-align: center; margin: auto; position: relative;" hidden>
+              <table style="text-align:center" class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Option</th>
+                    <th scope="col">Send Date</th>
+                    <th scope="col">Arrival Date</th>
+                    <th scope="col">Price($)</th> 
+                    <th scope="col">Select</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Cheapest</th>
+                    <td>08/25/2022</td>
+                    <td>10/25/2022</td>
+                    <td>15</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Quickest</th>
+                    <td>08/25/2022</td>
+                    <td>09/25/2022</td>
+                    <td>45</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Telstar recommended route</th>
+                    <td>09/25/2022</td>
+                    <td>12/25/2022</tr>
+                    <td>20</td>
+                  </tr>
+                </tbody>
+              </table> 
+              <button onclick="" style="width: 150px;">Book Delivery</button>   
+            </div>
+            
+
             </div>
           
           </div>
@@ -52,7 +110,25 @@
           </div>
           
           <div id="Report" class="tabcontent">
-            <h3>Parcel Delivery Data Report</h3>
+            <h3>Parcel Delivery Data Report</h3> 
+            
+            <div class="mainform2">
+              <div style="text-align: left">
+                <input onchange="changeDateField()" type="checkbox" id="dateFromR" name="reportTime" value="From">
+                <label for="dateFromR">From:</label>
+                <input type="date" id="fromDtR" name="fromDtR" disabled>
+                <br>
+                <input onchange="changeDateField()" type="checkbox" id="dateToR" name="reportTime" value="To">
+                <label for="dateToR">To:  </label>
+                <input type="date" id="toDtR" name="toDtR" disabled>
+                <br>
+                
+              </div>
+              <button style="width: 200px;">Export Data</button> 
+              
+
+            </div>
+
           </div>
        
           
@@ -63,5 +139,9 @@
 
 
           <script src="index.js"></script>
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
     </body>
 </html>
