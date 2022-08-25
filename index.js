@@ -21,7 +21,7 @@ function openTab(evt, tabName) {
   //validation
   if(document.getElementById("email").value == "admin" &&
   document.getElementById("password").value == "admin"){
-    window.location.href = "index.html";
+    window.location.href = "main.html";
   }
 
   

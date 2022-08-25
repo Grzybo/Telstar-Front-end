@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        
+    </head>
+    <body onload="openTab(event, 'Booking')">
+        <div class="logo">
+            <img src="stickerlogo.jpg" alt="Telstar Logistics" width="250" height="250">
+        </div>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Booking')">Booking Devivery</button>
+            <button class="tablinks" onclick="openTab(event, 'Report')">Data Report</button>
+          </div>
+          
+          <div id="Booking" class="tabcontent">
+            
+              <h3>Devivery Booking</h3> 
+              <div class="mainform">
+
+              <input type="search" id="fromLoc" name="fromLoc" placeholder="From Location">
+              <input type="search" id="toLoc" name="toLoc" placeholder="To Location"> 
+              <br>
+              <input type="date" id="fromDt" name="fromDt" placeholder="Date of Sending">
+              <input type="date" id="toDt" name="fromDt" placeholder="Date of Delivery">
+              <br>
+              <div style="text-align: left">
+                <label> Parcel Type</label><br>
+                <input type="radio" id="normal_type" name="parcel_type" value="Normal Goods">
+                <label for="normal_type">Normal Goods</label><br>
+                <input type="radio" id="liveAnimals_type" name="parcel_type" value="Live Animals">
+                <label for="liveAnimals_type">Live Animals</label><br>
+                <input type="radio" id="refrigirated_type" name="parcel_type" value="Refrigirated Goods">
+                <label for="refrigirated_type">Refrigirated Goods</label><br>
+                <input type="checkbox" id="cautious_type" name="cautious_goods" value="Cautious Goods">
+                <label for="cautious_type">Cautious Goods</label><br> 
+
+                <label for="weight">Parcel Wheight (kg)</label>
+                <input type="number" id="weight" name="weight" max="40" min="1"><br>
+                
+                <input type="checkbox" id="recomended" name="cautious_goods" value="Delivery Guarantee* (with additional fee)">
+                <label for="recomended">Delivery Guarantee* (with additional fee)<br> 
+            </div>
+            <button onclick="" style="width: 50%;">Search</button>  
+              
+            </div>
+          
+          </div>
+            
+            
+          </div>
+          
+          <div id="Report" class="tabcontent">
+            <h3>Parcel Delivery Data Report</h3>
+          </div>
+       
+          
+
+
+
+
+
+
+          <script src="index.js"></script>
+    </body>
+</html>
