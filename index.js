@@ -42,13 +42,7 @@ function openTab(evt, tabName) {
 
     const response = fetch('https://wa-tl-dk3.azurewebsites.net/api/route?type=animals&weight=20').then(response => response.json()).then(data => console.log(data));
      
-
-    // var dateToEl = document.getElementById("toDt");
-    // var dateFromEl = document.getElementById("fromDt"); 
-
-    // document.getElementById("quickestSend").value = dateToEl.value;
-    // document.getElementById("quickestSend").value = dateToEl.value;
-    // document.getElementById("quickestSend").value = dateToEl.value;
+  
 
 
 
@@ -63,7 +57,7 @@ function openTab(evt, tabName) {
   if(
     document.getElementById("fromLoc").value != "" &&
     document.getElementById("toLoc").value != "" &&
-    document.getElementById("fromDt").value != "" &&
+    document.getElementById("fromDt").value != "" ||
     document.getElementById("toDt").value != "" &&
     document.getElementById("weight").value != "" &&
     document.getElementById("normal_type").checked == true ||
@@ -136,6 +130,28 @@ function dataReport(){
     link.href = "data_report.xlsx";
     link.click();
 
+}
+
+
+function downloadFile()
+
+{
+
+ downloadURI("data_report.xlsx", "data_report.xlsx");
+
+}
+
+
+
+function downloadData() {
+  var name = "data_report.xlsx";
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = name;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  delete link;
 }
 
 
