@@ -19,8 +19,14 @@ function openTab(evt, tabName) {
  function goToMainPage(){
   
   //validation
+  if(document.getElementById("email").value == "admin" &&
+  document.getElementById("password").value == "admin"){
+    window.location.href = "index.html";
+  }
+
   
-  window.location.href = "index.html";
+  
+  
  }
 
 
