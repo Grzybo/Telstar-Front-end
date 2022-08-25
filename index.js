@@ -89,7 +89,10 @@ function openTab(evt, tabName) {
   document.getElementById("cautious_type").checked = false;
   document.getElementById("weight").value = "";
   document.getElementById("recomended").checked = false;
-  document.getElementById("resultTable").hidden = true;
+  document.getElementById("resultTable").hidden = true; 
+
+  document.getElementById("fromDt").disabled = false;
+  document.getElementById("toDt").disabled = false;
 
  } 
 
@@ -161,6 +164,8 @@ function dataReport(){
     }
   }
 
+  dateFromEl.disabled = true;
+
  } 
 
  function dateFromValidation(){
@@ -180,7 +185,9 @@ function dataReport(){
       dateToEl.value = "";
       window.alert("You cannot select delivery date ealier than sending date.");
     }
-  }
+  } 
+
+  dateToEl.disabled = true;
 
  } 
  
