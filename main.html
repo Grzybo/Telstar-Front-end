@@ -40,19 +40,19 @@
               </select>
               <br>
               <label for="fromDt">Sending Date:&nbsp;</label>
-              <input type="date" id="fromDt" name="fromDt" placeholder="Date of Sending">
+              <input onchange="dateFromValidation()" type="date" id="fromDt" name="fromDt" placeholder="Date of Sending">
               <br>
               <label for="toDt">Delivery Date:</label>
-              <input type="date" id="toDt" name="fromDt" placeholder="Date of Delivery">
+              <input onchange="dateToValidation()"  type="date" id="toDt" name="fromDt" placeholder="Date of Delivery">
               <br>
-              <div style="text-align: left">
-                <label> Parcel Type</label><br>
+              <div style="text-align: center">
+                <label> Parcel Type</label><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" id="normal_type" name="parcel_type" value="Normal Goods">
-                <label for="normal_type">Normal Goods</label><br>
+                <label for="normal_type">Normal Goods</label><br>&nbsp;
                 <input type="radio" id="liveAnimals_type" name="parcel_type" value="Live Animals">
-                <label for="liveAnimals_type">Live Animals</label><br>
+                <label for="liveAnimals_type">Live Animals</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" id="refrigirated_type" name="parcel_type" value="Refrigirated Goods">
-                <label for="refrigirated_type">Refrigirated Goods</label><br>
+                <label for="refrigirated_type">Refrigirated Goods</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="checkbox" id="cautious_type" name="cautious_goods" value="Cautious Goods">
                 <label for="cautious_type">Cautious Goods</label><br> 
 
@@ -80,21 +80,31 @@
                 <tbody>
                   <tr>
                     <th scope="row">Cheapest</th>
-                    <td>08/25/2022</td>
-                    <td>10/25/2022</td>
-                    <td>15</td>
+                    <td><input  type="date" id="cheapestSend"  readonly></td>
+                    <td style="width: 350px;"><input  type="date" id="cheapestArrival"  readonly></td>
+                    <td style="width: 200px;"><input type="number" id="cheapestPrice" min="1" readonly value="10"></td>
+                    <td>
+                      <input type="radio" id="cheapest_select" name="selectOption" value="cheapest">
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">Quickest</th>
-                    <td>08/25/2022</td>
-                    <td>09/25/2022</td>
-                    <td>45</td>
+                    <td style="width: 350px;"><input  type="date" id="quickSend"  readonly></td>
+                    <td><input  type="date" id="quickArrival"  readonly></td>
+                    <td><input type="number" id="quickestPrice"  min="1" readonly value="45"></td>
+                    <td>
+                      <input type="radio" id="quickest_select" name="selectOption" value="quickest">
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">Telstar recommended route</th>
-                    <td>09/25/2022</td>
-                    <td>12/25/2022</tr>
-                    <td>20</td>
+                    <td ><input  type="date" id="recommendedtSend"  readonly></td>
+                    <td><input  type="date" id="recommendedtArrival"  readonly></td>
+                    <td><input type="number" id="recommendedPrice" min="1" readonly value="25"></td>
+                    <td>
+                      <input type="radio" id="recommended_select" name="selectOption" value="recommended">
+                    </td>
+
                   </tr>
                 </tbody>
               </table> 
@@ -116,15 +126,17 @@
               <div style="text-align: left">
                 <input onchange="changeDateField()" type="checkbox" id="dateFromR" name="reportTime" value="From">
                 <label for="dateFromR">From:</label>
-                <input type="date" id="fromDtR" name="fromDtR" disabled>
+                <input onchange="reportDateValidation()" type="date" id="fromDtR" name="fromDtR" disabled>
                 <br>
                 <input onchange="changeDateField()" type="checkbox" id="dateToR" name="reportTime" value="To">
-                <label for="dateToR">To:  </label>
-                <input type="date" id="toDtR" name="toDtR" disabled>
+                <label for="dateToR">To: &nbsp; &nbsp;</label>
+                <input onchange="reportDateValidation()" type="date" id="toDtR" name="toDtR" disabled>
                 <br>
                 
               </div>
-              <button style="width: 200px;">Export Data</button> 
+              <button style="width: 200px;">Export Data
+                <a href="data_report.xlsx" download="file"></a>
+              </button> 
               
 
             </div>

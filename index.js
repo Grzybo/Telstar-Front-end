@@ -37,8 +37,43 @@ function openTab(evt, tabName) {
  } 
 
  function showTable(){
-  document.getElementById("resultTable").hidden = false;
- } 
+  if(searchValidation()){
+    document.getElementById("resultTable").hidden = false;
+
+    const response = fetch('https://wa-tl-dk3.azurewebsites.net/api/route?type=animals&weight=20').then(response => response.json()).then(data => console.log(data));
+     
+
+    // var dateToEl = document.getElementById("toDt");
+    // var dateFromEl = document.getElementById("fromDt"); 
+
+    // document.getElementById("quickestSend").value = dateToEl.value;
+    // document.getElementById("quickestSend").value = dateToEl.value;
+    // document.getElementById("quickestSend").value = dateToEl.value;
+
+
+
+    
+
+  }else{
+    window.alert("To perform search, all mandatory fields needs to be filled.");
+  }
+ }  
+
+ function searchValidation(){
+  if(
+    document.getElementById("fromLoc").value != "" &&
+    document.getElementById("toLoc").value != "" &&
+    document.getElementById("fromDt").value != "" &&
+    document.getElementById("toDt").value != "" &&
+    document.getElementById("weight").value != "" &&
+    document.getElementById("normal_type").checked == true ||
+    document.getElementById("liveAnimals_type").checked == true ||
+    document.getElementById("refrigirated_type").checked == true
+  ){
+    return true;
+  }
+  else return false;
+ }
 
  function resetFields(){
   
@@ -63,12 +98,103 @@ function openTab(evt, tabName) {
   if(document.getElementById("dateFromR").checked == true){
     document.getElementById("fromDtR").disabled = false;
   }
-  else document.getElementById("fromDtR").disabled = true; 
+  else {
+    document.getElementById("fromDtR").disabled = true; 
+    document.getElementById("fromDtR").value = "";
+  } 
 
   if(document.getElementById("dateToR").checked == true){
     document.getElementById("toDtR").disabled = false;
   }
-  else document.getElementById("toDtR").disabled = true;
+  else{
+    document.getElementById("toDtR").disabled = true;
+    document.getElementById("toDtR").value = "";
+  } 
+ } 
+
+
+ function fillTable(){
+
+ } 
+
+ function download(filename, textInput) {
+
+  var element = document.createElement('a');
+  element.setAttribute('href','data:text/plain;charset=utf-8, ' + encodeURIComponent(textInput));
+  element.setAttribute('download', filename);
+  document.body.appendChild(element);
+  element.click();
+}
+
+function dataReport(){
+
+    var link = document.createElement("a");
+    link.download = "data_report.xlsx";
+    link.href = "data_report.xlsx";
+    link.click();
+
+}
+
+
+ //######################################################################################
+ // dates validation
+  //######################################################################################
+ function dateToValidation(){
+  
+  var dateToEl = document.getElementById("toDt");
+  var dateFromEl = document.getElementById("fromDt");
+  var today = new Date();
+  var to =  new Date(String(dateToEl.value));
+
+
+  if(to < today){
+    window.alert("You cannot select date ealier than today's date.");
+    dateToEl.value = "";
+  }
+
+  
+
+  if(dateFromEl.value !== "" &&  dateToEl .value !== ""){
+    if(dateToEl.value <= dateFromEl.value){
+      dateToEl.value = "";
+      window.alert("You cannot select delivery date ealier than sending date.");
+    }
+  }
+
+ } 
+
+ function dateFromValidation(){
+  
+  var dateToEl = document.getElementById("toDt");
+  var dateFromEl = document.getElementById("fromDt");
+  var today = new Date();
+  var from =  new Date(String(dateFromEl.value));
+
+  if(from < today){
+    window.alert("You cannot select date ealier than today's date.");
+    dateFromEl.value = "";
+  } 
+
+  if(dateFromEl.value !== "" &&  dateToEl .value !== ""){
+    if(dateToEl.value <= dateFromEl.value){
+      dateToEl.value = "";
+      window.alert("You cannot select delivery date ealier than sending date.");
+    }
+  }
+
+ } 
+ 
+ function reportDateValidation(){
+
+  var dateToEl = document.getElementById("toDtR");
+  var dateFromEl = document.getElementById("fromDtR");
+
+  if(dateFromEl.value !== "" &&  dateToEl .value !== ""){
+    if(dateToEl.value <= dateFromEl.value){
+      dateToEl.value = "";
+      window.alert("You cannot select delivery date ealier than sending date.");
+    }
+  }
  }
 
 
