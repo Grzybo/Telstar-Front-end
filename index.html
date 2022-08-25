@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        
+    </head>
+    <body onload="openTab(event, 'Booking')">
+        <div class="logo">
+            <img src="stickerlogo.jpg" alt="Telstar Logistics" width="250" height="250">
+        </div>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Booking')">Booking Devivery</button>
+            <button class="tablinks" onclick="openTab(event, 'Report')">Data Report</button>
+          </div>
+          
+          <div id="Booking" class="tabcontent">
+            
+              <h3>Devivery Booking</h3> 
+              <div class="mainform">
+
+              <input type="search" id="fromLoc" name="fromLoc" placeholder="From Location">
+              <input type="search" id="toLoc" name="toLoc" placeholder="To Location"> 
+              <br>
+              <input type="date" id="fromDt" name="fromDt" placeholder="Date of Sending">
+              <input type="date" id="toDt" name="fromDt" placeholder="Date of Delivery">
+
+            </div>
+          
+          </div>
+            
+            
+          </div>
+          
+          <div id="Report" class="tabcontent">
+            <h3>Parcel Delivery Data Report</h3>
+          </div>
+       
+          
+
+
+
+
+
+
+          <script src="index.js"></script>
+    </body>
+</html>
