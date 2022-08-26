@@ -42,7 +42,27 @@ function openTab(evt, tabName) {
 
     const response = fetch('https://wa-tl-dk3.azurewebsites.net/api/route?type=animals&weight=20').then(response => response.json()).then(data => console.log(data));
      
-  
+    if(!document.getElementById("fromDt").disabled){
+      document.getElementById("cheapestSend").value = document.getElementById("fromDt").value
+      document.getElementById("quickSend").value = document.getElementById("fromDt").value
+      document.getElementById("recommendedtSend").value = document.getElementById("fromDt").value 
+
+      document.getElementById("cheapestSend").value = document.getElementById("toDt").value
+      document.getElementById("quickSend").value = document.getElementById("toDt").value
+      document.getElementById("recommendedtSend").value = document.getElementById("toDt").value 
+
+    }
+
+    if(document.getElementById("toDt").value != ""){
+      document.getElementById("cheapestSend").value = document.getElementById("toDt").value
+      document.getElementById("quickSend").value = document.getElementById("toDt").value
+      document.getElementById("recommendedtSend").value = document.getElementById("toDt").value
+    
+      document.getElementById("cheapestSend").value = document.getElementById("fromDt").value
+      document.getElementById("quickSend").value = document.getElementById("fromDt").value
+      document.getElementById("recommendedtSend").value = document.getElementById("fromDt").value
+    } 
+    
 
 
 
@@ -152,7 +172,74 @@ function downloadData() {
   link.click();
   document.body.removeChild(link);
   delete link;
-}
+} 
+
+function bookDelivery(){
+  if(document.getElementById("cheapest_select").checked ||
+  document.getElementById("quickest_select").checked ||
+  document.getElementById("recommended_select").checked){
+      var name=prompt("Please enter company name");
+      if(document.getElementById("recommended_select").checked){
+        var discount=prompt("Please enter the dicount (%)"); 
+      }
+              
+      var booking = ""
+
+      if(document.getElementById("cheapest_select").checked){
+
+        booking += "Customer name " + name + ". Send date: " +  document.getElementById("cheapestSend").value + 
+          ". Arrival date: " + document.getElementById("cheapestArrival").value + ". Price: " +
+          document.getElementById("cheapestPrice").value + "$."
+
+      }else if(document.getElementById("quickest_select").checked){
+        booking += "Customer name " + name + ". Send date: " +  document.getElementById("quickSend").value + 
+          ". Arrival date: " + document.getElementById("quickArrival").value + ". Price: " +
+          document.getElementById("quickestPrice").value + "$."
+
+      }else if(document.getElementById("recommended_select").checked){
+        booking += "Customer name " + name + ". Send date: " +  document.getElementById("recommendedtSend").value + 
+          ". Arrival date: " + document.getElementById("recommendedtArrival").value + ". Price: " +
+          document.getElementById("recommendedPrice").value + "$. Discount: -" + discount + "%."
+
+      }
+      
+      window.alert(booking); 
+
+      const requestOptions = {
+
+        method: 'POST',
+      
+        headers: {
+      
+          'Content-Type': 'application/json',
+      
+       },
+      
+        body: JSON.stringify({
+      
+          FromLocation: document.getElementById("fromLoc").value,
+      
+          ToLocation: document.getElementById("toLoc").value,
+      
+          Bookings: []
+      
+         })
+      
+      };
+      
+      fetch('https://wa-tl-dk3.azurewebsites.net/api/deliveries', requestOptions).then(response => {
+      
+        response.json()
+      
+      })
+
+
+
+      resetFields();
+      
+  }
+} 
+
 
 
  //######################################################################################
