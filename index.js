@@ -40,28 +40,32 @@ function openTab(evt, tabName) {
   if(searchValidation()){
     document.getElementById("resultTable").hidden = false;
 
-    const response = fetch('https://wa-tl-dk3.azurewebsites.net/api/route?type=animals&weight=20').then(response => response.json()).then(data => console.log(data));
+    //const response = fetch('https://wa-tl-dk3.azurewebsites.net/api/route?type=animals&weight=20').then(response => response.json()).then(data => console.log(data));
      
-    if(!document.getElementById("fromDt").disabled){
+    
       document.getElementById("cheapestSend").value = document.getElementById("fromDt").value
       document.getElementById("quickSend").value = document.getElementById("fromDt").value
       document.getElementById("recommendedtSend").value = document.getElementById("fromDt").value 
 
-      document.getElementById("cheapestSend").value = document.getElementById("toDt").value
-      document.getElementById("quickSend").value = document.getElementById("toDt").value
-      document.getElementById("recommendedtSend").value = document.getElementById("toDt").value 
+      const date1 = new Date(document.getElementById("fromDt").value);
+      date1.setDate(date1.getDate() + 1);
+      console.log(date1) 
 
-    }
+      const date2 = new Date(document.getElementById("fromDt").value);
+      date2.setDate(date2.getDate() + 2);
+      console.log(date2.getDate().textInput) 
 
-    if(document.getElementById("toDt").value != ""){
-      document.getElementById("cheapestSend").value = document.getElementById("toDt").value
-      document.getElementById("quickSend").value = document.getElementById("toDt").value
-      document.getElementById("recommendedtSend").value = document.getElementById("toDt").value
+      const date3 = new Date(document.getElementById("fromDt").value);
+      date3.setDate(date3.getDate() + 3);
+      console.log(date3.getDate())
+
     
-      document.getElementById("cheapestSend").value = document.getElementById("fromDt").value
-      document.getElementById("quickSend").value = document.getElementById("fromDt").value
-      document.getElementById("recommendedtSend").value = document.getElementById("fromDt").value
-    } 
+      document.getElementById("cheapestArrival").value = date3.toISOString().split('T')[0];
+      document.getElementById("quickArrival").value = date1.toISOString().split('T')[0];
+      document.getElementById("recommendedtArrival").value = date2.toISOString().split('T')[0];
+    
+      
+    
     
 
 
